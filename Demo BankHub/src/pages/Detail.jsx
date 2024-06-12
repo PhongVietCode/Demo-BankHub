@@ -18,6 +18,7 @@ const Detail = () => {
       .then((response) => {
         setIsLoading(false);
         setData(response.data["transactions"]);
+        // console.log(response)
       })
       .catch((e) => {
         console.log(e);

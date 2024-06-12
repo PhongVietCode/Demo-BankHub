@@ -5,6 +5,8 @@ import { baseURL } from "../constants";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import landingImg from "../assets/landing-img.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRedirect, setIsRedicrect] = useState(false);
@@ -20,6 +22,18 @@ const Home = () => {
         setIsLoading(false);
       })
       .catch((error) => {
+        setIsLoading(false);
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          // transition: Slide,
+          });
         console.log(error);
       });
   };
@@ -48,6 +62,7 @@ const Home = () => {
           a.click();
         })
         .catch((error) => {
+          setIsLoading(false)
           console.log(error);
         });
     }
@@ -93,6 +108,7 @@ const Home = () => {
           </div>
         </>
       )}
+      <ToastContainer />
     </div>
   );
 };
